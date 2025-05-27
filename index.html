@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tugas Informatika</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="#home">Beranda</a>
+      <a href="#about">Tentang</a>
+      <a href="#projects">Projek</a>
+      <a href="#contact">Kontak</a>
+      <button id="modeToggle">🌓</button>
+    </nav>
+  </header>
+
+  <section id="home" class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="video.mp4" type="video/mp4" />
+      Browser kamu nggak support video background.
+    </video>
+    <div class="overlay">
+      <h1 class="animate">Halo, Kami Datang 👋</h1>
+      <p class="animate">Selamat datang di dunia web kami.</p>
+      <a class="btn animate" href="#about">Scroll ke Bawah</a>
+    </div>
+  </section>
+
+  <section id="about" class="content-section">
+    <h2 class="animate">Tentang Kami</h2>
+    <p class="animate">Gue lagi belajar bikin website full style! Parallax, animasi, dan efek neon. 😎</p>
+  </section>
+
+  <section id="projects" class="parallax bg2">
+    <div class="overlay">
+      <h2 class="animate">Projek Keren</h2>
+      <p class="animate">Masih coming soon... stay tuned!</p>
+    </div>
+  </section>
+
+  <section id="contact" class="content-section">
+    <h2 class="animate">Hubungi Gw</h2>
+    <p class="animate">DM aja ke <a href="https://www.instagram.com/azellastraea__/" target="_blank">Instagram kami</a></p>
+    <a class="btn animate" href="#home">⬆️ Balik ke Atas</a>
+  </section>
+
+  <script>
+    // Fade on load
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    // Scroll animation
+    const animateEls = document.querySelectorAll(".animate");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    animateEls.forEach(el => observer.observe(el));
+
+    // Dark/Light mode toggle
+    const modeToggle = document.getElementById("modeToggle");
+    modeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+    });
+  </script>
+</body>
+</html>
